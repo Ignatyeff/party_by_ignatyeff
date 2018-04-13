@@ -15,7 +15,7 @@ if (isset($_SESSION['admin_access'])) {
     $app->layout->leftMenu->addItem(['Главная страница', 'icon'=>'unordered list'],['index']);
 
     $crud = $app->layout->add('CRUD');
-    $crud->setModel(new Friend($db));
+    $crud->setModel(new Friends($db));
     $crud->addQuickSearch(['name','surname','phone_number','age']);
 
   } else {
