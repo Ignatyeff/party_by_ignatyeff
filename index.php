@@ -12,7 +12,7 @@ $app->initLayout('Centered');
 require 'connecting.php';
 
 {$form = $app->layout->add('Form');
-$form->setModel(new Friends($db));
+$form->setModel(new Friend($db));
 $form->onSubmit(function($form) {
   $form->model->save();
   $form->success('Record updated');
@@ -22,7 +22,7 @@ $form->onSubmit(function($form) {
 $app->add(['ui'=>'divider']);
 
 {$grid = $app->layout->add('Grid');
-$grid->setModel(new Friends($db));
+$grid->setModel(new Friend($db));
 $grid->addQuickSearch(['name','surname','phone_number','age']);}
 
 $app->add(['ui'=>'divider']);
