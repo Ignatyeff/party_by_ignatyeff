@@ -9,7 +9,7 @@ require 'vendor/autoload.php';
 $app = new \atk4\ui\App('Запись на тусовку');
 $app->initLayout('Centered');
 
-//require 'connecting.php';
+require 'connecting.php';
 
 {$form = $app->layout->add('Form');
 $form->setModel(new Friend($db));
