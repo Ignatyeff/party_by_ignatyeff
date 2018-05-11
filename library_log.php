@@ -5,9 +5,9 @@ $app = new \atk4\ui\App('Library');
 $app->initLayout('Centered');
 
 
-$someone = new Client($db);
+$someone = new Librarian($db);
 $form = $app->layout->add('Form');
-$form->setModel(new Client($db));
+$form->setModel(new Librarian($db));
 $form->buttonSave->set('Вход');
 $form->onSubmit(function($form) use ($someone) {
 
@@ -16,7 +16,7 @@ $form->onSubmit(function($form) use ($someone) {
   if ($someone['surname'] == $form->model['surname']){
     if ($someone['password'] == $form->model['password']) {
       $_SESSION['user_id'] = $someone->id;
-      $_SESSION['status'] = 'student';
+      $_SESSION['status'] = 'librarian';
       return new \atk4\ui\jsExpression('document.location="main.php"');
     } else {
       $someone->unload();
@@ -31,5 +31,3 @@ $form->onSubmit(function($form) use ($someone) {
     return $er;
   }
 });
-$button = $app->layout->add(['Button', 'Lib. log']);
-$button->link(['library_log']);
